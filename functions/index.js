@@ -17,6 +17,14 @@ app.get("/test", (req, res) => {
     res.send("Hello World")
 });
 
+// Routes needed: 
+/* 
+Live feed from twitter
+User Login 
+Betting lines 
+Database needs to store users bets
+*/
+
 
 exports.app = functions.https.onRequest(app);
 // Handle another request
