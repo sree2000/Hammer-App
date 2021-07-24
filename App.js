@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 // import { WebView } from 'react-native-webview';
 // import {Twitter } from './Twitter'
 import Tweet from './Tweet';
+import Twitter from './TwitterTest'
 
 function Feed() {
   // let JS = '<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>';
@@ -23,7 +24,8 @@ function Feed() {
 function Profile() {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      <Tweet name={{ first: "Arnav", last: "Parashar" }}></Tweet>
+       {/* <Tweet name={{ first: "Arnav", last: "Parashar" }}></Tweet> */}
+     <Twitter></Twitter>
     </View>
   );
 }

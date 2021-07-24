@@ -27,8 +27,8 @@ export default class Tweet extends React.Component {
 
     constructor(props) {
         super(props)
-        const { tweet, name, handle, time, retweeted, liked, picture } = this.props
-        const twit = "Hello world"//randomWords({ min: 18, max: 40 }).join(" ");
+        const { tweet, name, handle, time, liked, picture } = this.props
+        const twit = "Yesterday’s Federal court ruling is deeply disappointing. While the court’s order does not now affect current DACA recipients, this decision nonetheless relegates hundreds of thousands of young immigrants to an uncertain future. It is my fervent hope that Congress will act."//randomWords({ min: 18, max: 40 }).join(" ");
         this.state = {
           //  photo: { uri: picture.thumbnail },
             touched: false,
@@ -38,9 +38,7 @@ export default class Tweet extends React.Component {
             name: `${name.first.capitalizeFirstLetter()} ${name.last.capitalizeFirstLetter()}`,
             handle: `@${name.first}`,
             time: "1hr",
-            retweeted: [true, false].random(),
             liked: [true, false].random(),
-            retweetedBy: ["Sandra", "Hannit", "Michael", "Jason", "Queen"][Math.floor(Math.random() * ["Sandra", "Hannit", "Michael", "Jason", "Queen"].length)]
         }
 
     }
@@ -55,17 +53,6 @@ export default class Tweet extends React.Component {
         return (
             <View style = {styles.wrapper}>
                 <View key={thekey} style={styles.container}>
-                    {!isReply ?
-                        <View style={styles.isReplyContainer}>
-
-                            <View style={{ flex: 0.23, borderColor: "red", borderWidth: 0, alignItems: "flex-end" }}>
-                                <EvilIcons name={'retweet'} size={25} color={'rgb(136, 153, 166)'} />
-                            </View>
-                            <Text style={{ flex: 0.5, color: "rgb(136, 153, 166)" }}>{retweetedBy} Retweeted</Text>
-                        </View>
-                        :
-                        true
-                    }
                     <View style={styles.innerContainer}>
 
                         <View style={styles.photoContainer}>
@@ -124,9 +111,13 @@ const styles = StyleSheet.create({
         flex: 0.2,
     },
     container: {
-        flex: 1,
+        //flex: 0.6,
+        justifyContent: 'flex-start',
+
         borderBottomColor: "black",
         borderBottomWidth: 0.5,
+        // borderColor: "purple",
+        // borderWidth: 0,
         flexDirection: "column",
         backgroundColor: "#1b2836"
     },
@@ -139,7 +130,8 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     innerContainer: {
-        flex: 1,
+        // flex: 1,
+        justifyContent: 'flex-start',
         borderColor: "green",
         flexDirection: "row",
         borderWidth: 0,
@@ -159,31 +151,34 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     info: {
-        flex: 0.77,
+        flex: 1,
         borderColor: "yellow",
         flexDirection: "column",
         borderWidth: 0
     },
     userDetails: {
-        flex: 1,
-        borderColor: "blue",
+        marginTop: 10,
+       // flex: 0.15,
+        borderColor: "green",
         borderWidth: 0,
-        marginBottom: 5
+        marginBottom: 5,
+        paddingBottom: 5
     },
     userName: { color: "white", fontWeight: "bold" },
     userHandleAndTime: {
         color: "rgb(136, 153, 166)",
-        marginLeft: 5
+        marginLeft: 10,
     },
-    tweetTextContainer: { flex: 1, borderColor: "blue", borderWidth: 0 },
+    tweetTextContainer: { //flex: 0.3,
+         borderColor: "red", borderWidth: 0 },
     tweetText: { color: "white", paddingRight: 10 },
     tweetActionsContainer: {
-        flex: 1,
+     //  flex: 0.15,
         borderColor: "blue",
         borderWidth: 0,
         marginTop: 5,
         flexDirection: "row",
-        paddingBottom: 5
+        paddingBottom: 1
     },
     commentButton: {
         paddingLeft: 0,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Image, Platform, StyleSheet, View, Text, ListView, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Animated, Image, Platform, StyleSheet, View, Text, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { DrawerActions } from 'react-navigation'
 
 import axios from "axios"
@@ -7,15 +7,15 @@ import axios from "axios"
 import Tweet from './Tweet'
 
 const NAVBAR_HEIGHT = 64;
-const STATUS_BAR_HEIGHT = Platform.select({ ios: 20, android: 24 });
+const STATUS_BAR_HEIGHT = Platform.select({ ios: 20, android: 24, web:20 });
 
-const AnimatedListView = Animated.createAnimatedComponent(ListView);
+const AnimatedListView = Animated.createAnimatedComponent(FlatList);
 
 export default class Twitter extends Component {
     constructor(props) {
         super(props);
 
-        const dataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+      //  const dataSource = new FlatList.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
         const scrollAnim = new Animated.Value(0);
         const offsetAnim = new Animated.Value(0);
@@ -46,9 +46,10 @@ export default class Twitter extends Component {
     _scrollValue = 0;
 
     componentDidMount() {
-        let ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        })
+        // let ds = new FlatList.DataSource({
+        //     rowHasChanged: (r1, r2) => r1 !== r2
+        // })
+        let ds = []
         /** Fetch tweets */
         axios.get(`https://randomuser.me/api/?results=10`)
             .then(response => {
@@ -124,7 +125,7 @@ export default class Twitter extends Component {
 
     render() {
         const { clampedScroll } = this.state;
-
+        console.log([0, NAVBAR_HEIGHT - STATUS_BAR_HEIGHT])
         const navbarTranslate = clampedScroll.interpolate({
             inputRange: [0, NAVBAR_HEIGHT - STATUS_BAR_HEIGHT],
             outputRange: [0, -(NAVBAR_HEIGHT)],
