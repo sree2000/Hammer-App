@@ -3,24 +3,27 @@ import { Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { WebView } from 'react-native-webview';
+// import { WebView } from 'react-native-webview';
 // import {Twitter } from './Twitter'
-// import {Tweet} from './Tweet'
+import Tweet from './Tweet';
 
 function Feed() {
-  let JS = '<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>';
+  // let JS = '<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>';
 
-  let source = JS + '<blockquote class="twitter-tweet" data-lang="es"><p lang="en" dir="ltr">8 TED Talks to inspire projects with kids: <a href="https://twitter.com/TEDTalks/status/758116657638309896">https://twitter.com/TEDTalks/status/758116657638309896</a> <a href="https://twitter.com/TEDTalks/status/758116657638309896">pic.twitter.com/HMmYAeP7Km</a></p>&mdash; TED Talks (@TEDTalks) <a href="https://twitter.com/TEDTalks/status/758116657638309896">27 de julio de 2016</a></blockquote>';
+  // let source = JS + '<blockquote class="twitter-tweet" data-lang="es"><p lang="en" dir="ltr">8 TED Talks to inspire projects with kids: <a href="https://twitter.com/TEDTalks/status/758116657638309896">https://twitter.com/TEDTalks/status/758116657638309896</a> <a href="https://twitter.com/TEDTalks/status/758116657638309896">pic.twitter.com/HMmYAeP7Km</a></p>&mdash; TED Talks (@TEDTalks) <a href="https://twitter.com/TEDTalks/status/758116657638309896">27 de julio de 2016</a></blockquote>';
 
-  let test = '<h1> Whats up</h1>'
-  return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
-
+  // let test = '<h1> Whats up</h1>'
+  // return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Profile!</Text>
+    </View>  );
 }
 
 function Profile() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile!</Text>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
+      <Tweet name={{ first: "Arnav", last: "Parashar" }}></Tweet>
     </View>
   );
 }
@@ -78,6 +81,8 @@ function MyTabs() {
 }
 
 export default function App() {
+  console.log("Hello")
+  console.log(Tweet)
   return (
     <NavigationContainer>
       <MyTabs />
