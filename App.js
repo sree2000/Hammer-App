@@ -11,7 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Tweet from './Tweet';
 import Twitter from './TwitterTest'
 import { WebView } from 'react-native-webview';
-
+import Login from './Login'
 
 
 export const hammerApi = axios.create({
@@ -85,8 +85,8 @@ function Profile() {
 
 function Notifications() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <MyWeb></MyWeb>
+    <View style={{ flex: 1 }}>
+      <Login></Login>
     </View>
   );
 }
