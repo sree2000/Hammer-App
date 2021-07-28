@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 
 .runtimeconfig.json
+firebase-debug.log
 
 # macOS
 .DS_Store
